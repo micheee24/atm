@@ -5,17 +5,15 @@ const ATMDeposit = ({ onChange, isDeposit, isValid }) => {
     <label className="label huge">
       <h3> {choice[Number(!isDeposit)]}</h3>
       <input
-        id="number-input"
+        className="number-input"
         type="number"
-        width="200"
         onChange={onChange}
       ></input>
       <input
+        className="submit-input"
         type="submit"
         disabled={!isValid}
-        width="200"
         value="Submit"
-        id="submit-input"
       ></input>
     </label>
   );
@@ -74,6 +72,7 @@ const Account = () => {
           onChange={(e) => handleModeSelect(e)}
           name="mode"
           id="mode-select"
+          className="button"
         >
           <option id="no-selection" value=""></option>
           <option id="deposit-selection" value="Deposit">
@@ -95,4 +94,9 @@ const Account = () => {
   );
 };
 // ========================================
-ReactDOM.render(<Account />, document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <Account />
+  </React.StrictMode>
+);
